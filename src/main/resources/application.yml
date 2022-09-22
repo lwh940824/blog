@@ -16,8 +16,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
-    username: cos
-    password: cos1234
+    username: root
+    password: dnjsgml31038%
 
   jpa:
     open-in-view: true
@@ -27,7 +27,7 @@ spring:
       use-new-id-generator-mappings: false
     show-sql: true
     properties:
-      hibernate.hbm2ddl.auto: create
+      hibernate.hbm2ddl.auto: update
       hibernate.format_sql: true
 
   jackson:
