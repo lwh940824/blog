@@ -19,6 +19,7 @@ public class UserService {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("UserService : 회원가입() : " + e.getMessage());
+            System.out.println("e = " + e);
         }
         return -1;
     }
