@@ -27,7 +27,7 @@ spring:
       use-new-id-generator-mappings: false
     show-sql: true
     properties:
-      hibernate.hbm2ddl.auto: update
+      hibernate.hbm2ddl.auto: create
       hibernate.format_sql: true
 
   jackson:

@@ -3,6 +3,7 @@ package com.cos.blog.test;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,17 @@ public class DummyControllerTest {
     @Autowired // 의존성 주입
     private UserRepository userRepository;
 
+    @DeleteMapping("/dummy/user/{id}")
+    public String delete(@PathVariable int id) {
+        try {
+            userRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            return "삭제 실패하였습니다. 해당 id는 DB에 없습니다.";
+        }
+
+        return "삭제되었습니다. id : " + id;
+    }
+
     // email, password
     @Transactional
     @PutMapping("/dummy/user/{id}")
@@ -37,7 +49,7 @@ public class DummyControllerTest {
 
 //        userRepository.save(requestUser);
         // 더티 체킹
-        return null;
+        return user;
     }
 
     // http://localhost:8000/blog/dummy/user
