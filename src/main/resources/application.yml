@@ -21,6 +21,10 @@ spring:
 
   jpa:
     open-in-view: true
+    # Lazy이다, 요청이 오는 순간 영속성 컨텍스트를 시작 => 컨트롤러에서 서비스로 갈 때 JDBC, 트랜잭션 시작
+    # select해서 캐시에 넣고 그걸 수정하면 더티체킹 발생 => FK get하면 다시 JDBC만 연결해서 프록시를 실제 객체로 바꿔준다,
+    # 이때 c, u, d 작업은 수행하지 못한다!
+    # 왜?! 트랜잭션은 다시 연결하지 않기 때문이다,
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
