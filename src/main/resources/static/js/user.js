@@ -1,6 +1,7 @@
 let index = {
     init: function () {
-        document.getElementById('btn-save').addEventListener('click', () => {
+        let nullCheck = document.getElementById('btn-save');
+        nullCheck && nullCheck.addEventListener('click', () => {
             this.save();
         });
     },
@@ -14,7 +15,7 @@ let index = {
         console.log(data);
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', '/blog/api/user', true);
+        xhr.open('POST', '/auth/joinProc', true);
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.responseType = 'json';
         xhr.send(JSON.stringify(data));
@@ -22,7 +23,7 @@ let index = {
             if (xhr.status === 200) {
                 //success
                 alert("회원가입이 완료되었습니다.")
-                location.href = "/blog";
+                location.href = "/";
             } else {
                 //failed
                 alert(JSON.stringify(xhr.response));
